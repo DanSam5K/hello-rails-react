@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Greeting from './Greeting';
 class App extends React.Component {
   render() {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Switch>
+          <Routes>
             <Route exact path="/" render={() => 'Home!'} />
-            <Route
-              path="/hello"
-              render={() => <HellWorld greetings="Friend" />}
-            />
-          </Switch>
+            <Route path="/hello" render={() => <Greeting message="Friend" />} />
+          </Routes>
         </BrowserRouter>
       </React.Fragment>
     );
