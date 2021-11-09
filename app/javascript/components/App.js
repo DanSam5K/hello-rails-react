@@ -7,7 +7,7 @@ const store = configureStore();
 class App extends React.Component {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <Router>
           <Routes>
             <Route exact path="/" element={'Home!'} />
