@@ -1,16 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+
 // import PropTypes from 'prop-types';
 
-const GET_GREETINGS_REQUEST = 'GET_GREETINGS_REQUEST';
-
-const getGreetings = () => {
-  console.log('getGreetings Actions!');
-  return {
-    type: GET_GREETINGS_REQUEST,
-  };
-};
 class Greeting extends React.Component {
   render() {
     return (
@@ -22,6 +13,8 @@ class Greeting extends React.Component {
         >
           Get Greetings
         </button>
+        <br />
+        <ul>{greetItem}</ul>
       </React.Fragment>
     );
   }
@@ -36,4 +29,4 @@ const mapDispatchToProps = { getGreetings };
 // Greeting.propTypes = {
 //   message: PropTypes.string,
 // };
-export default connect(structuredSelector, mapDispatchToProps)(Greeting);
+export default Greeting;
