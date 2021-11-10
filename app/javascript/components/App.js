@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Greeting from './Greeting';
+import Navbar from './Navbar';
 
 const App = () => (
   <Router>
+    <Navbar />
     <Routes>
       <Route
         exact
