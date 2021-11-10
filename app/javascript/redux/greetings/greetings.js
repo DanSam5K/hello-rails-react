@@ -1,18 +1,19 @@
-// const apiEndpoint = '/api/v1/greetings';
-
-const GET_GREETINGS_REQUEST = 'GET_GREETINGS_REQUEST';
-// const GET_GREETINGS_SUCCESS = 'GET_GREETINGS_SUCCESS';
+import * as actions from './greetingAction';
+const apiEndpoint = '/api/v1/greetings';
 
 export const getGreetings = () => {
-  console.log('getThings() Action!!');
-  return {
-    type: GET_GREETINGS_REQUEST,
+  // console.log('getGreetings() Action!!');
+  return (dispatch) => {
+    dispatch({ type: actions.GET_GREETINGS_REQUEST });
+    return fetch(apiEndpoint)
+      .then((response) => response.json())
+      .then((json) => dispatch(getGreetingSuccess(json)));
   };
 };
 
-export function getGreetingsSuccess(json) {
+const getGreetingSuccess = (json) => {
   return {
-    type: GET_GREETINGS_SUCCESS,
+    type: actions.GET_GREETINGS_SUCCESS,
     json,
   };
-}
+};
