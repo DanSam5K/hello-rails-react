@@ -1,37 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { getGreetings } from '../redux/greetings/greetings';
 
-class Greeting extends React.Component {
-  render() {
-    const { greetings } = this.props;
-    const greetMessage = greetings.map((greeting) => {
-      return <li>{greeting.message}</li>;
-    });
-    return (
-      <React.Fragment>
-        Message: Hello {this.props.message}
-        <button
-          className="getGreetingsBtn"
-          onClick={() => this.props.getGreetings()}
-        >
-          Get Greetings
-        </button>
-        <br />
-        <ul>{greetMessage}</ul>
-      </React.Fragment>
-    );
-  }
-}
+const Greeting = () => {
+  const dispatch = useDispatch();
+  const getGreetingAction = bindActionCreators(getGreetings, dispatch);
+  const greeting = useSelector((state) => state.greeting);
+  useEffect(() => {
+    getGreetingAction();
+    return () => null;
+  }, []);
 
-const structuredSelector = createStructuredSelector({
-  greetings: (state) => state.greetings,
-});
+  return <h2>{greeting.messages}</h2>;
+};
 
-const mapDispatchToProps = { getGreetings };
-
-// Greeting.propTypes = {
-//   message: PropTypes.string,
-// };
-export default connect(structuredSelector, mapDispatchToProps)(Greeting);
+export default Greeting;

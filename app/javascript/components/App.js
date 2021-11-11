@@ -1,21 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import Greeting from './Greeting';
-import configureStore from '../redux/configureStore';
-const store = configureStore();
+import Navbar from './Navbar';
 
-class App extends React.Component {
-  render() {
-    <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={'Home!'} />
-          <Route path="/hello" element={<Greeting />} />
-        </Routes>
-      </Router>
-    </Provider>;
-  }
-}
-
+const App = () => (
+  <Router>
+    <Navbar />
+    <Routes>
+      <Route
+        exact
+        path="/"
+        element={<h2>Hello Welcome to Rails and React App!</h2>}
+      />
+      <Route path="/hello" element={<Greeting />} />
+    </Routes>
+  </Router>
+);
 export default App;

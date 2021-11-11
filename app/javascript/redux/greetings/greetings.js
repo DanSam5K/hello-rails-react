@@ -1,19 +1,13 @@
 import * as actions from './greetingAction';
 const apiEndpoint = '/api/v1/greetings';
-
-export const getGreetings = () => {
-  // console.log('getGreetings() Action!!');
-  return (dispatch) => {
-    dispatch({ type: actions.GET_GREETINGS_REQUEST });
-    return fetch(apiEndpoint)
-      .then((response) => response.json())
-      .then((json) => dispatch(getGreetingSuccess(json)));
-  };
-};
-
-const getGreetingSuccess = (json) => {
-  return {
-    type: actions.GET_GREETINGS_SUCCESS,
-    json,
-  };
+export const getGreetings = () => async (dispatch) => {
+  const resMessage = await fetch(apiEndpoint, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+  const payload = await resMessage.json();
+  dispatch({ type: actions.GET_GREETINGS_REQUEST, payload });
 };
