@@ -8,8 +8,8 @@ The main goals for this exercise are:
 - Implement a connection between a Ruby on Rails back-end and React front-end.
 - Understand the pros and cons of different approaches of connecting Ruby on Rails back-end with React front-end.
 
-Below, we can see a screenshot of the app.
-![screenshot](./app/assets/images/app_screenshot.png)
+- Below, we can see a screenshot of the app.
+> ![screenshot](./app/assets/images/app_screenshot.png)
 ## Built With
 
 - Ruby on Rails
