@@ -1,6 +1,5 @@
 import * as actions from './greetingAction';
 const apiEndpoint = '/api/v1/greetings';
-
 export const getGreetings = () => async (dispatch) => {
   const resMessage = await fetch(apiEndpoint, {
     method: 'GET',
